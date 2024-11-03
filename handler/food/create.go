@@ -1,20 +1,25 @@
-package food
+package handler
 
 import (
 	"database/sql"
+	"encoding/json"
 	"homework/model"
 	"homework/repository"
 	"homework/service"
 	"homework/util"
 )
 
-func Login(db *sql.DB) {
+func AddFood(db *sql.DB) {
 	// input
 	request := model.Request{}
 	util.ReadJson(&request, "body")
 
 	// proses
-	result := service.InitFoodService(*repository.InitFoodRepo(db)).Create(*request.Data.(*model.Food))
+	food := model.Food{}
+	requestData, _ := json.Marshal(request.Data)
+	json.Unmarshal(requestData, &food)
+
+	result := service.InitFoodService(*repository.InitFoodRepo(db)).Create(food)
 
 	// output
 	util.BuildJson(result, "response")

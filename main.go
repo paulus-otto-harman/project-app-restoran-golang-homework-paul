@@ -13,3 +13,8 @@ func main() {
 	go app.Container(&wg, config.SessionTimeout)
 	wg.Wait()
 }
+
+//func xmain() {
+//	db := database.DbOpen()
+//	(&view.Logout{}).Render(context.WithValue(context.Background(), "sessionId", "d80daedb-f526-49f0-891e-47ac6e2bb480"), db)
+//}

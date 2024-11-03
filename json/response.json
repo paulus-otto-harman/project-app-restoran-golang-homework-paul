@@ -1,1 +1,1 @@
-{"status_code":200,"message":"User authenticated, Session created","data":{"session_id":"2eb2f766-ab94-457f-9380-e5d40bb9fb1d"}}
+{"status_code":200,"message":"User successfully logged out"}
