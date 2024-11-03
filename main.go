@@ -1,8 +1,15 @@
 package main
 
-import "homework/database"
+import (
+	"homework/app"
+	"homework/config"
+	"sync"
+)
 
 func main() {
-	db := database.DbOpen()
-	defer db.Close()
+	wg := sync.WaitGroup{}
+
+	wg.Add(1)
+	go app.Container(&wg, config.SessionTimeout)
+	wg.Wait()
 }
